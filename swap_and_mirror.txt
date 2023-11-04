@@ -1,0 +1,27 @@
+public static void swap(BTNode r)
+ {
+    BTNode t; 
+    t = r.getLeft();
+    r.setLeft(r.getRight());
+    r.setRight(t);
+ }
+
+ public static BTNode mirror_image(BTNode root)
+ {
+    BTNode iter = root;
+    Queue<BTNode> q = new LinkedList<BTNode>();
+    
+    q.add(iter);
+    while(!q.isEmpty())
+    {
+       iter = q.remove();
+       swap(iter);
+       if(iter.getLeft() != null)
+            q.add(iter.getLeft());
+       
+       if(iter.getRight() != null)
+            q.add(iter.getRight());
+
+     }//end of while
+     return root;
+ }

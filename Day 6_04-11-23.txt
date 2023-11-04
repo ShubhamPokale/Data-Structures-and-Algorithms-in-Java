@@ -1,0 +1,216 @@
+public BTNode mirror_image()
+{
+   BTNode iter, res;
+   BinaryTree t = new BinaryTree();
+   t.setRoot(createNode(root.getData());
+
+   iter = root;
+   res = t.getRoot();
+
+   Queue q1 = new Queue(); // check syntax
+   Queue q2 = new Queue(); // check syntax
+
+   q1.add(iter);
+   q2.add(res);
+
+   while(!q1.isEmpty())
+   {
+      iter = q1.remove();   // 100
+      res = q2.remove();    // 1000
+      if(iter.getLeft()!=null)
+      {
+         q1.add(iter.getLeft());
+         res.setLeft(createNode(iter.getLeft().getData());
+         q2.add(res.getLeft());
+      }
+      if(iter.getRight()!=null)
+      {
+         q1.add(iter.getRight());
+         res.setRight(createNode(iter.getRight().getData());
+         q2.add(res.getRight());
+      }
+    }
+
+    iter = t.getRoot();
+    q1.add(iter);
+   
+    while(!q1.isEmpty())
+    {
+       iter = q1.remove();
+       swap(iter);
+       if(iter.getLeft() != null)
+            q1.add(iter.getLeft());
+       
+       if(iter.getRight() != null)
+            q1.add(iter.getRight());
+
+     }//end of while
+    
+     return t.getRoot();
+ }
+
+_________________________________________________________________________
+
+discussed reverse LL using recursion
+
+
+__________________________________________________________________
+
+Binary Search Tree -
+
+    10, 12, 5, 17, 3,  11,  22,  25,  19,  1,  7
+
+
+
+bt.insert(10);
+bt.insert(12);
+bt.insert(5);
+
+
+bt.setRoot(bt.insertRec(10));
+
+
+bt.setRoot(bt.insertRec(12));
+
+bt.setRoot(bt.insertRec(5));
+
+bt.setRoot(bt.insertRec(17));
+
+
+public void insert(int d)     //wrapper function
+{
+   root = insertRec(root,d);
+}
+
+
+wrapper function - is given to user, which internally calls a recursive function
+
+
+
+class BinarySearchTree
+{
+   private BTNode root;
+
+   public BinarySearchTree() { root = null; }
+   public BTNode getRoot() { return root; }
+   public void setRoot(BTNode n) { root = n ; }
+
+   public void insert(int d)
+   {
+       root = insertRec(root,d);     7                              10
+   }
+
+   private BTNode insertRec(BTNode ptr, int d)   
+   {
+      if(ptr == null)
+      {
+         ptr = new BTNode(d);
+         return ptr;
+      }
+      else if( d < ptr.getData())
+         ptr.setLeft(insertRec(ptr.getLeft(),d)) ;
+      else if(d > ptr.getData())
+         ptr.setRight(insertRec(ptr.getRight(),d));
+      else
+        sysout("\n Duplicate value");
+      return ptr;
+    }
+
+
+   public void inorder()
+   {
+      visit_inorder(root);
+   }
+
+   private void visit_inorder(BTNode ptr)
+   {
+      if(ptr == null)   return;
+
+      visit_inorder(ptr.getLeft());
+      sysout(ptr.getData());
+      visit_inorder(ptr.getRight());
+   }
+
+   
+   public void preorder()
+   {
+      visit_preorder(root);
+   }
+
+   private void visit_preorder(BTNode ptr)
+   {
+      if(ptr == null)   return;
+
+      sysout(ptr.getData());
+      visit_preorder(ptr.getLeft());
+      visit_preorder(ptr.getRight());
+   }
+
+   public void postorder()
+   {
+      visit_postorder(root);
+   }
+
+   private void visit_postorder(BTNode ptr)
+   {
+      if(ptr == null)   return;
+
+      visit_postorder(ptr.getLeft());
+      visit_postorder(ptr.getRight());
+      sysout(ptr.getData());
+   }
+
+
+   public BTNode search(int key)
+   {
+      return searchRec(root,key);                               
+   }
+
+   private BTNode searchRec(BTNode ptr, int d)   
+   {
+      if(ptr == null)
+      {
+         sysout("\n Not found..");
+         return null;
+      }
+      else if( d < ptr.getData())
+         return searchRec(ptr.getLeft(),d) ;
+      else if( d > ptr.getData())
+         return searchRec(ptr.getRight(),d);
+      else
+         return ptr;
+    }
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+   
